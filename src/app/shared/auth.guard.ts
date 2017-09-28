@@ -6,7 +6,7 @@ import { Router, CanActivate } from '@angular/router';
 export class AuthGuard implements CanActivate {
 
   User = {
-    exists: false
+    exists: true
   }
   constructor(private router: Router) { }
 
