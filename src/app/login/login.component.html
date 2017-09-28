@@ -1,0 +1,31 @@
+<div class="container">
+    <form id="loginForm" class="mat-elevation-z1" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+        <table>
+            <tr>
+                <td>
+                    <md-form-field>
+                        <input mdInput placeholder="Username" formControlName="username">
+                        <md-error *ngIf="loginForm.controls['username'].errors?.required">
+                            Username is required!
+                        </md-error>
+                    </md-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <md-form-field>
+                        <input mdInput placeholder="Password" formControlName="password">
+                        <md-error *ngIf="loginForm.controls['password'].errors?.required">
+                            Password is required!
+                        </md-error>
+                    </md-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button md-raised-button color="primary" [disabled]="!loginForm.valid">Submit</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
