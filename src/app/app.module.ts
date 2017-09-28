@@ -6,14 +6,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app.routing';
 
+import { AuthGuard } from 'app/shared/auth.guard';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
-  ],
+    LoginComponent,
+    HomeComponent
+],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -21,7 +25,9 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
