@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
-// import { UserService } from './user.service';
+import { UserService } from '../services/user.service';
 import { Router, CanActivate } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
+import { User } from '../models/user';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  User = {
-    exists: true
+  user: User;
+  private subscription: Subscription;
+  constructor(private userService: UserService, private router: Router) {
+    this.subscription = this.userService.user.subscribe(user => {
+      this.user = user;
+    })
   }
-  constructor(private router: Router) { }
 
   canActivate() {
-    if (this.User.exists) {
+    if (this.user.name !== 'xyz') {
       return true;
     } else {
       this.router.navigate(['/login']);
-      return false;
     }
   }
 }

@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 
 import { StoreModule } from '@ngrx/store';
 import { campaigns } from './reducers/campaign.reducer';
+import { user } from './reducers/user.reducer';
 import { CoreModule } from './core/core.module';
 
 import { AppRoutingModule } from './app.routing';
@@ -20,6 +21,7 @@ import { CampaignComponent } from './campaign/campaign.component';
 import { CampaignCountComponent } from './campaign/count.component';
 
 import { CampaignService } from './services/campaign.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -36,14 +38,16 @@ import { CampaignService } from './services/campaign.service';
     ReactiveFormsModule,
     HttpModule,
     StoreModule.forRoot({
-      campaigns
+      campaigns,
+      user
     }),
     CoreModule,
     AppRoutingModule
   ],
   providers: [
     AuthGuard,
-    CampaignService
+    CampaignService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

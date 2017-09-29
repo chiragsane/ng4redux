@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private userService: UserService) {
 
     this.loginForm = formBuilder.group({
       'username': [null, Validators.compose([Validators.required])],
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     });
   }
   onSubmit(formValue) {
-    this.router.navigate(['home']);
+    this.userService.loadUser(formValue);
   }
   ngOnInit() {
   }
