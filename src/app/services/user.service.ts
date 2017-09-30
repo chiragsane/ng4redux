@@ -12,7 +12,6 @@ import { User } from '../models/user';
 @Injectable()
 export class UserService {
     user: Observable<User>;
-    campaignUrl = 'user';
     constructor(private http: HttpService, private router: Router, private store: Store<AppStore>) {
         this.user = store.select(appStore => appStore.user);
     }
