@@ -6,7 +6,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { StoreModule } from '@ngrx/store';
-import { campaigns } from './reducers/campaign.reducer';
 import { user } from './reducers/user.reducer';
 import { CoreModule } from './core/core.module';
 
@@ -17,10 +16,7 @@ import { AuthGuard } from 'app/shared/auth.guard';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { CampaignComponent } from './campaign/campaign.component';
-import { CampaignCountComponent } from './campaign/count.component';
 
-import { CampaignService } from './services/campaign.service';
 import { UserService } from './services/user.service';
 
 @NgModule({
@@ -28,8 +24,6 @@ import { UserService } from './services/user.service';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    CampaignComponent,
-    CampaignCountComponent
 ],
   imports: [
     BrowserModule,
@@ -38,7 +32,6 @@ import { UserService } from './services/user.service';
     ReactiveFormsModule,
     HttpModule,
     StoreModule.forRoot({
-      campaigns,
       user
     }),
     CoreModule,
@@ -46,7 +39,6 @@ import { UserService } from './services/user.service';
   ],
   providers: [
     AuthGuard,
-    CampaignService,
     UserService
   ],
   bootstrap: [AppComponent]
